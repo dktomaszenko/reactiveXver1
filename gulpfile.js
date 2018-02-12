@@ -1,15 +1,13 @@
 let gulp = require('gulp');
 
 //Plugins
+let connect = require('gulp-connect');
 let clean = require('gulp-clean');
+let sourcemaps = require('gulp-sourcemaps');
 let jshint = require('gulp-jshint');
 let concat = require('gulp-concat');
 let uglify = require('gulp-uglify');
 let imagemin = require('gulp-imagemin');
-
-
-/*let rename = require('gulp-rename');
-let serve = require('gulp-serve');*/
 
 
 let bases = {
@@ -39,8 +37,25 @@ gulp.task('scripts', ['clean'], function () {
         .pipe(jshint.reporter('default'))
         .pipe(uglify())
         .pipe(concat('app.min.js'))
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(bases.dist + 'scripts/'));
 });
+
+gulp.task('watch', function () {
+    gulp.watch(
+        ['./app/*.html', './app/styles/*.css', './app/scripts/**/**.js'],
+        ['html', 'copy']);
+});
+
+gulp.task('connect', function () {
+
+    connect.server({
+        root: 'app',
+        livereload: true
+    });
+});
+
 
 // Imagemin images and ouput them in dist
 gulp.task('imagemin', ['clean'], function () {
@@ -74,30 +89,9 @@ gulp.task('watch', function () {
 });
 
 // Define the default task as a sequence of the above tasks
-gulp.task('default', ['clean', 'scripts', 'imagemin', 'copy']);
+gulp.task('build', ['clean', 'scripts', 'imagemin', 'copy']);
+gulp.task('default', ['build', 'connect', 'watch']);
 
-
-// Concatenate & Minify JS
-/*gulp.task('scripts', function () {
-    return gulp.src('app/!*.js')
-        .pipe(concat('all.js'))
-        .pipe(gulp.dest('dist'))
-        .pipe(rename('all.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
-});
-
-// Watch Files For Changes
-gulp.task('watch', function () {
-    gulp.watch('app/*.js', ['scripts']);
-});
-
-gulp.task('serve', serve('.'));
-
-// Default Task
-gulp.task('default', ['scripts', 'serve', 'watch']);
-
-*/
 
 
 
