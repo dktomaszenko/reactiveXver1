@@ -1,4 +1,5 @@
 (function() {
     'use strict';
-    console.log('xxx');
+    const {Observable} = Rx;
+
 })();

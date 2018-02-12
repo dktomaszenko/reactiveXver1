@@ -33,8 +33,8 @@ gulp.task('clean', function () {
 // Process scripts and concatenate them into one output file
 gulp.task('scripts', ['clean'], function () {
     gulp.src(paths.scripts, {cwd: bases.app})
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
+/*        .pipe(jshint())
+        .pipe(jshint.reporter('default'))*/
         .pipe(uglify())
         .pipe(concat('app.min.js'))
         .pipe(sourcemaps.init({loadMaps: true}))
