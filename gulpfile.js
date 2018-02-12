@@ -12,7 +12,7 @@ let imagemin = require('gulp-imagemin');
 
 let bases = {
     app: 'app/',
-    dist: 'dist/',
+    dist: 'dist/'
 };
 
 let paths = {
@@ -50,6 +50,11 @@ gulp.task('connect', function () {
     });
 });
 
+gulp.task('html', function () {
+    gulp.src('./app/*.html')
+        .pipe(gulp.dest('./app'))
+        .pipe(connect.reload());
+});
 
 // Imagemin images and ouput them in dist
 gulp.task('imagemin', ['clean'], function () {
@@ -79,7 +84,7 @@ gulp.task('copy', ['clean'], function () {
 
 // A development task to run anytime a file changes
 gulp.task('watch', function () {
-    gulp.watch('app/**/*', ['scripts', 'copy']);
+    gulp.watch('app/**/*', ['scripts', 'copy', 'html']);
 });
 
 // Define the default task as a sequence of the above tasks
