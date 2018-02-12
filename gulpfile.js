@@ -42,12 +42,6 @@ gulp.task('scripts', ['clean'], function () {
         .pipe(gulp.dest(bases.dist + 'scripts/'));
 });
 
-gulp.task('watch', function () {
-    gulp.watch(
-        ['./app/*.html', './app/styles/*.css', './app/scripts/**/**.js'],
-        ['html', 'copy']);
-});
-
 gulp.task('connect', function () {
 
     connect.server({
