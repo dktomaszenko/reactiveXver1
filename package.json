@@ -1,0 +1,27 @@
+{
+  "name": "reactivexver1",
+  "version": "1.0.0",
+  "description": "https://github.com/gulpjs/gulp/blob/v3.9.1/docs/getting-started.md",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "react": "^16.2.0",
+    "rxjs": "^5.5.6"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dktomaszenko/reactiveXver1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dktomaszenko/reactiveXver1/issues"
+  },
+  "homepage": "https://github.com/dktomaszenko/reactiveXver1#readme"
+}
