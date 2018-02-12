@@ -24,12 +24,6 @@ let paths = {
     extras: []
 };
 
-// Delete the dist directory
-gulp.task('clean', function () {
-    return gulp.src(bases.dist)
-        .pipe(clean());
-});
-
 // Process scripts and concatenate them into one output file
 gulp.task('scripts', ['clean'], function () {
     gulp.src(paths.scripts, {cwd: bases.app})
@@ -48,6 +42,12 @@ gulp.task('connect', function () {
         root: 'app',
         livereload: true
     });
+});
+
+// Delete the dist directory
+gulp.task('clean', function () {
+    return gulp.src(bases.dist)
+        .pipe(clean());
 });
 
 gulp.task('html', function () {
